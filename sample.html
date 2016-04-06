@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default"></script>
+    <style>
+      body { font-family: sans-serif; font-size: 22px; width: 30em; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <div id='alpha'>alpha</div>
+    <div id="text-recorder">
+      <p>Under the soon-to-be offered guarantee in the U.S., customers dissatisfied for any reason can call <em>Papa John&rsquo;s</em> within 30 minutes of receiving their pizza and they will be offered a choice of having a new pie made for them on the spot or be credited with a free pizza for another day, <b>Ritchie</b> said.</p>
+      <p><b>Ritchie</b> noted that <em>Papa John’s</em> has scored highest or tied for the highest marks among the top four pizza chains in the American Customer Satisfaction Index for 14 of the last 16 years. But <b>Ritchie</b> suggested Papa John’s must do a better a job differentiating itself from rivals.</p>
+      <p><em>Papa John&rsquo;s</em> Schnatter, 54, agrees the company needs to improve on telling its story. The CEO, who launched his pizza business out of a broom closet at his father&rsquo;s bar, stars in company&rsquo;s ads and has become the most ubiquitous face in the pizza industry.</p>
+      <p>Schnatter, who backed Republican presidential candidate Mitt Romney in the 2012 election, also drew attention after he told shareholders that President Obama&rsquo;s Affordable Care Act would drive up the cost of pizza by 11 to 14 cents per order. The company&rsquo;s Facebook page was littered with messages from critics who said they&rsquo;d be happy to pay the extra cost if it resulted in workers being covered by health care.</p>
+      <p>Schnatter said he is confident the company can grow its customer base, particularly with millennials and busy mothers, by underscoring the company’s efforts to improve its quality.</p>
+      <p>“The consumer is more informed about what’s good and what’s not good—millennials especially,” Schnatter said &ldquo;I think we’re skating to where the public is going.”</p>
+    </div>
+    <div id='omega'>omega</div>
+    <script src="app/assets/javascripts/custom-selection.js"></script>
+    <script>
+      if (!('caretPositionFromPoint' in document)) {
+        if ('caretRangeFromPoint' in document) {
+          document.caretPositionFromPoint = function(x, y) {
+            var cr = document.caretRangeFromPoint(x, y);
+            return (cr !== null && cr !== undefined) ? { offsetNode: cr.startContainer, offset: cr.startOffset } : null;
+          };
+        } else {
+          throw "cannot pollyfill caretPositionFromPoint"
+        }
+      }
+    </script>
+    <script src="sample.js"></script>
+  </body>
+</html>

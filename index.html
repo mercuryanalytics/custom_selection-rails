@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="node_modules/chai-dom/chai-dom.js"></script>
+    <script>mocha.setup("bdd");</script>
+    <script src="test/build/test-runner.js"></script>
+    <script>mocha.run();</script>
+  </body>
+</html>
