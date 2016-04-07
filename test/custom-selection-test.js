@@ -44,7 +44,7 @@ describe("CustomSelection", function() {
       });
 
       it("can indicate when the anchor and focus are the same", function() {
-        expect(subject.isCollapsed).to.be.true;
+        expect(subject.collapsed).to.be.true;
       });
     });
 
@@ -55,7 +55,7 @@ describe("CustomSelection", function() {
         var subject = new CustomSelection(fixture)
         subject.collapse($("p").firstChild, 4);
 
-        expect(subject.isCollapsed).to.be.true;
+        expect(subject.collapsed).to.be.true;
         expect(subject.anchorOffset).to.equal(4);
         expect(subject.anchorNode).to.equal($("p").firstChild);
         expect(subject.focusOffset).to.equal(subject.anchorOffset);
@@ -74,7 +74,7 @@ describe("CustomSelection", function() {
         subject.collapse($("p").firstChild, 4);
         subject.extend($("p").firstChild, 9);
 
-        expect(subject.isCollapsed).to.be.false;
+        expect(subject.collapsed).to.be.false;
         expect(subject.anchorNode.nodeValue.charAt(subject.anchorOffset)).to.equal("5");
         expect(subject.focusNode.nodeValue.charAt(subject.focusOffset)).to.equal("0");
       });
@@ -162,7 +162,7 @@ describe("CustomSelection", function() {
             subject.collapse($("p").firstChild, 4);
             subject.extend($("p").firstChild, 9);
 
-            expect(subject.isCollapsed).to.be.false;
+            expect(subject.collapsed).to.be.false;
             expect(fixture.textContent).to.equal("Hello, world!");
             expect(subject.anchorOffset).to.equal(0);
             expect(subject.anchorNode.nodeValue).to.equal("o, wo");
@@ -180,7 +180,7 @@ describe("CustomSelection", function() {
             subject.collapse($("b").firstChild, 0);
             subject.extend($("b").firstChild, 6);
 
-            expect(subject.isCollapsed).to.be.false;
+            expect(subject.collapsed).to.be.false;
             expect(fixture.textContent).to.equal("LeftCenterRight");
             expect(subject.anchorOffset).to.equal(0);
             expect(subject.anchorNode.nodeValue).to.equal("Center");
@@ -200,7 +200,7 @@ describe("CustomSelection", function() {
             subject.collapse($("p").firstChild, 9);
             subject.extend($("p").firstChild, 4);
 
-            expect(subject.isCollapsed).to.be.false;
+            expect(subject.collapsed).to.be.false;
             expect(fixture.textContent).to.equal("Hello, world!");
             expect(subject.anchorOffset).to.equal(0);
             expect(subject.anchorNode.nodeValue).to.equal("rld!");
@@ -221,7 +221,7 @@ describe("CustomSelection", function() {
             subject.collapse($("p").firstChild, 4);
             subject.extend($("p").lastChild, 3);
 
-            expect(subject.isCollapsed).to.be.false;
+            expect(subject.collapsed).to.be.false;
             expect(fixture.textContent).to.equal("Goodbye, cruel world!");
             expect(subject.anchorOffset).to.equal(0);
             expect(subject.anchorNode.nodeValue).to.equal("bye, ");
@@ -239,7 +239,7 @@ describe("CustomSelection", function() {
             subject.collapse($("p").lastChild, 3);
             subject.extend($("p").firstChild, 4);
 
-            expect(subject.isCollapsed).to.be.false;
+            expect(subject.collapsed).to.be.false;
             expect(fixture.textContent).to.equal("Goodbye, cruel world!");
             expect(subject.anchorOffset).to.equal(0);
             expect(subject.anchorNode.nodeValue).to.equal("rld!");
@@ -466,7 +466,7 @@ describe("CustomSelection", function() {
 
         expect(fixture).to.be.normalized;
         expect($$("mark+mark")).to.have.length(0);
-        expect(subject.isCollapsed).to.be.true;
+        expect(subject.collapsed).to.be.true;
         expect(fixture).to.have.html("<p>Left<b>Center</b>Right</p>");
       });
     });

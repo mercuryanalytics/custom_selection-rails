@@ -55,7 +55,6 @@ function selectHandler(x, y) {
   var sel = new CustomSelection(textRecorder);
   var startCaret = document.caretPositionFromPoint(x, y);
   sel.collapse(startCaret.offsetNode, startCaret.offset);
-  console.log("initially", description(sel));
 
   function onMove(x, y) {
     var endCaret = document.caretPositionFromPoint(x, y);
@@ -68,7 +67,7 @@ function selectHandler(x, y) {
     var range = sel.destroy();
   }
 
-  return { onMove: onMove, onEnd: onEnd }
+  return { onMove: onMove, onEnd: onEnd };
 }
 
 installMouseHandler(textRecorder, selectHandler);

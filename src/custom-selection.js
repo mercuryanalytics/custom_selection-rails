@@ -22,7 +22,7 @@ export default function CustomSelection(root) {
     }
   }
 
-  function isCollapsed() {
+  function collapsed() {
     return !(anchor.node !== focus.node || anchor.offset !== focus.offset);
   }
 
@@ -116,7 +116,7 @@ export default function CustomSelection(root) {
   }
 
   function extend(node, offset) {
-    if (isCollapsed()) {
+    if (collapsed()) {
       focus.node = node;
       focus.offset = offset;
       normalize(focus);
@@ -164,14 +164,18 @@ export default function CustomSelection(root) {
   }
 
   function destroy() {
+    var start, end;
     if (compareNodes(focus.node, anchor.node) < 0) {
-      nodeWrapper.unwrapRange(focus.node, anchor.node, { includeStart: true, includeEnd: false });
+      start = focus;
+      end = anchor;
     } else {
-      nodeWrapper.unwrapRange(anchor.node, focus.node, { includeStart: true, includeEnd: false });
+      start = anchor;
+      end = focus;
     }
+    nodeWrapper.unwrapRange(start.node, end.node, { includeStart: true, includeEnd: false });
     anchor.join();
     focus.join();
-    return { startContainer: anchor.node, startOffset: anchor.offset, endContainer: focus.node, endOffset: focus.offset };
+    return { startContainer: start.node, startOffset: start.offset, endContainer: end.node, endOffset: end.offset, collapsed: collapsed() };
   }
 
   Object.defineProperty(this, "root", { get: function() { return root; }});
@@ -179,7 +183,7 @@ export default function CustomSelection(root) {
   Object.defineProperty(this, "anchorOffset", { get: function() { return anchor.offset; }});
   Object.defineProperty(this, "focusNode", { get: function() { return focus.node; }});
   Object.defineProperty(this, "focusOffset", { get: function() { return focus.offset; }});
-  Object.defineProperty(this, "isCollapsed", { get: isCollapsed });
+  Object.defineProperty(this, "collapsed", { get: collapsed });
 
   Object.defineProperty(this, "collapse", { value: collapse });
   Object.defineProperty(this, "extend", { value: extend });
