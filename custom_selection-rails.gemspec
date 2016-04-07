@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Custom html text-selection}
   spec.description   = %q{Replaces the browser's built-in text-selection with custom code, primarily for mobile environments.}
-  spec.homepage      = "https://github.com/mercuryanalytics/flipbook-rails"
+  spec.homepage      = "https://github.com/mercuryanalytics/custom_selection-rails"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
