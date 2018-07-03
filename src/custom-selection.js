@@ -1,8 +1,6 @@
-"use strict";
-
 import LocationReference from "./location-reference";
 import NodeWrapper from "./node-wrapper";
-import { compareNodes, findFirstTextNode, textWalker } from './dom-helpers';
+import { compareNodes, findFirstTextNode, textWalker } from "./dom-helpers";
 
 export default function CustomSelection(root) {
   if (root === undefined) root = document.body;
@@ -107,7 +105,7 @@ export default function CustomSelection(root) {
   }
 
   function compare(a, b, callbacks) {
-    var cmp = compareNodes(a.node, b.node)
+    var cmp = compareNodes(a.node, b.node);
     if (cmp < 0) return callbacks.lt();
     if (cmp > 0) return callbacks.gt();
     if (a.offset < b.offset) return callbacks.lt();
